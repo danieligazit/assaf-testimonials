@@ -16,8 +16,7 @@
 	
 	let data = {district: {}, region: {}};
 	let metadata = {district: {}, region: {}};
-
-	let slideShowImage
+	let imageUrl = 'https://cdn.abcotvs.com/dip/images/1238804_030916-mba-baby-otter-img.jpg';
 	let regionsGeo;
 	let geojson;
 	
@@ -129,6 +128,20 @@
 				explore = false;
 			},
 		},
+
+		slideshow: {
+			slideshow01: () => {
+				
+				imageUrl = 'https://cdn.abcotvs.com/dip/images/1238804_030916-mba-baby-otter-img.jpg';
+			},
+			slideshow02: () => {
+				imageUrl = 'https://www.travelandleisure.com/thmb/FUsS1wKYFV6LQC8A1c5TAqEvAFg=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/header-otter-pup-aqaurium-of-the-pacific-NAMEOTTER0822-1ca395679e384efead83c6f88eb4484d.jpg';
+			},
+			slideshow03: () => {
+				imageUrl = 'https://cdn.vox-cdn.com/thumbor/oTE7ZTjbIW0grAUz6GYk6h6nRkI=/0x0:1502x1001/920x613/filters:focal(786x389:1026x629):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/71045160/sn_2.0.jpeg';
+			},
+			
+		}
 	};
 
 		// Code to run Scroller actions when new caption IDs come into view
@@ -297,10 +310,28 @@
 	</Scroller>
 	{/if}
 	
-	<Scroller {threshold} bind:id={id['map']}>
-		<Slideshow>
+	<Scroller {threshold} bind:id={id['slideshow']} index={0}>
+		<div slot="background">
+			<Slideshow imageUrl={imageUrl}>
 
-		</Slideshow>
+			</Slideshow>
+		</div>
+		<div slot="foreground">
+			<section data-id="slideshow01">
+				<div class="col-medium">
+					<p>
+						This chart shows the <strong>area in square kilometres</strong> of each local authority district in the UK. Each circle represents one district. The scale is logarithmic.
+					</p>
+				</div>
+			</section>
+			<section data-id="slideshow02">
+				<div class="col-medium">
+					<p>
+						This chart shows the <strong>area in square kilometres</strong> of each local authority district in the UK. Each circle represents one district. The scale is logarithmic.
+					</p>
+				</div>
+			</section>
+		</div>
 	</Scroller>
 
 </main>
