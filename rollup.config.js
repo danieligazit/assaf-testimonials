@@ -7,6 +7,7 @@ import livereload from 'rollup-plugin-livereload';
 import css from 'rollup-plugin-css-only';
 import sveltePreprocess from 'svelte-preprocess';
 import typescript from '@rollup/plugin-typescript';
+import glsl from 'rollup-plugin-glsl';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -47,6 +48,16 @@ export default {
 				dev: !production
 			}
 		}),
+
+		glsl({
+			// By default, everything gets included
+			include: 'src/*components/gl/shaders/*.glsl',
+			exclude: ['**/index.html'],
+
+			sourceMap: true,
+			compress: false
+		}),
+
 		// we'll extract any component CSS out into
 		// a separate file - better for performance
 		css({ output: 'bundle.css' }),

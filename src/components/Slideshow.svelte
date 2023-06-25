@@ -14,23 +14,20 @@
 
 	let imageIdCounter = 0
 
-	let images = [
-    	'https://cdn.abcotvs.com/dip/images/1238804_030916-mba-baby-otter-img.jpg',
-    	'https://www.travelandleisure.com/thmb/FUsS1wKYFV6LQC8A1c5TAqEvAFg=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/header-otter-pup-aqaurium-of-the-pacific-NAMEOTTER0822-1ca395679e384efead83c6f88eb4484d.jpg',
-    	'https://cdn.vox-cdn.com/thumbor/oTE7ZTjbIW0grAUz6GYk6h6nRkI=/0x0:1502x1001/920x613/filters:focal(786x389:1026x629):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/71045160/sn_2.0.jpeg'
-	];
-	
 	const  sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
 	async function handleFetch(url, id) {
 		id = id ? id : (() => {
-			(url in imageUrlToId) ? imageUrlToId[url] : (() => {
-				imageUrlToId[imageIdCounter];
+			return imageUrlToId[url] || (() => {
+				imageUrlToId[url] = imageIdCounter;
+				let returnValue = imageIdCounter;
 				imageIdCounter++;
+				return returnValue;
 			})();
 		})();
 
 		const f = {id, url: url}
+		console.log('f', f)
 		if (!photo) { // init
 			photo = f;
 			newPhoto = f;
@@ -70,14 +67,29 @@
 	{/if}
 </div>
 <style>
+	body, html {
+		margin: 0;
+		padding: 0;
+		overflow-x: hidden; /* Hide horizontal scrollbar */
+	}
+
 	.container {
-		height: 10rem;
-		width: 100%; 
-  		height: 200px;
-  		overflow: hidden;
+		/* width: 100vw; */
+		height: 100vh;
+		overflow: hidden;
+		position: relative;
 	}
 	figure {
 		position: absolute;
+		width: 100%;
+		height: 100%;
+	}
+	img {
+		opacity: 0;
+		transition: all 1s ease;
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
 	}
 	.firstLoad figure.orig img {
 		opacity: 1;
@@ -88,8 +100,5 @@
 	figure.new.crossfading img {
 		opacity: 1;
 	}
-	img {
-		opacity: 0;
-		transition: all 1s ease;
-	}
+
 </style>

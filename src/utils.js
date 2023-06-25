@@ -1,5 +1,6 @@
-import { csvParse, autoType } from 'd3-dsv';
 import { feature } from 'topojson-client';
+import { csvParse, autoType } from 'd3-dsv';
+
 
 // CORE FUNCTIONS
 export function setColors(themes, theme) {

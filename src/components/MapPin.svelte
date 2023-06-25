@@ -2,6 +2,8 @@
     import { getContext, onDestroy } from 'svelte';
     import maplibre from 'maplibre-gl';
     import { onMount } from 'svelte';
+    import {blur, fade, fly, scale, slide} from 'svelte/transition';
+
     
     export let content;
     export let lngLat;
@@ -17,7 +19,9 @@
     onMount(() => {
         tooltip
             .setLngLat(lngLat)
-            .setHTML(content)
+            .setHTML(
+              content
+            )
             .addTo(map);
 
         
@@ -28,6 +32,8 @@
   
 <style>
 :global(.maplibregl-popup-content) {
-        padding: 5px 10px !important;
+        padding: 2px 2px !important;
 }
+
+
 </style>
