@@ -16,7 +16,8 @@
 	import Divider from "./components/Divider.svelte";
     import Timeline from "./components/Timeline.svelte";
     import Section from "./components/Section.svelte";
-    import Panorama from "./components/Panorama.svelte";
+    import Video from "./components/Video.svelte";
+    import Fact from "./components/Fact.svelte";
 	let data = {district: {}, region: {}};
 	let metadata = {district: {}, region: {}};
 	let imageUrl = 'images/south-sudan-refugee-camp-3.jpg';
@@ -34,6 +35,8 @@
 	let animation = getMotion(); // Set animation preference depending on browser preference
 	let id = {}; // Object to hold visible section IDs of Scroller components
 	let idPrev = {}; // Object to keep track of previous IDs, to compare for changes
+
+	let videoVisible = false;
 	onMount(() => {
 		idPrev = {...id};
 	});
@@ -230,27 +233,6 @@
 </script>
 
 <main>
-
-
-<Scroller {threshold} bind:id={id['panorama']} index={0}>
-	<!-- <div slot="background">
-				<Panorama
-	src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Veste_Oberhaus_%28Passau%2C_full_spherical_panoramic_image%2C_equirectangular_projection%29.jpg/800px-Veste_Oberhaus_%28Passau%2C_full_spherical_panoramic_image%2C_equirectangular_projection%29.jpg?20180919194115" 
-	alt="Pretty Sky" 
-/>
-		
-	</div>
-	<div slot="foreground">
-		<section data-id="panorama01">
-			<div class="col-medium">
-				<p>
-					baba
-				</p>
-			</div>
-		</section>
-		
-	</div>
-</Scroller> -->
 
 
 	<div>
@@ -450,7 +432,68 @@
 	</Scroller>
 
 
+	
+	<Scroller {threshold} bind:id={id['slideshow']} index={0} bind:visible={videoVisible}>
+		<div slot="background">
+			<Video src={'videos/sahara.mp4'} visible={videoVisible}/>
+		</div>
+		<div slot="foreground">
+			<section data-id="video01">
+				<div class="col-medium">
+					<p>
+						The arduous journey from Eritrea led Lemlem and Aman to the refugee camps of South Sudan. Life in the camp was marked by scarcity and uncertainty, a world away from the home they once knew.
+					</p>
+				</div>
+			</section>
+			<section data-id="video02">
+				<div class="col-medium">
+					<p>
+						"The camp was a sea of makeshift tents," Lemlem recalls. "The days were scorching hot, and the nights were frigid. We were always either in line for food, water, or medical assistance. But it was a sanctuary compared to what we had escaped from."
+					</p>
+				</div>
+			</section>
+			<section data-id="video03">
+				<div class="col-medium">
+					<p>
+						Despite the hardships, the refugee camp was also a place of resilience and hope. "We were all survivors, all clinging onto hope. There was a sense of community, and we looked out for each other," Lemlem said. She found work helping distribute aid supplies, while Aman started attending a makeshift school run by aid workers.
+					</p>
+				</div>
+			</section>
+			
+		</div>
+	</Scroller>
 
+	<Scroller {threshold} bind:id={id['sinai']} index={0}>
+		<div slot="background">
+			<Fact fact={{title: 'hey', description: 'shoot to stop'}} />
+			<Slideshow imageUrl={imageUrl}></Slideshow>
+		</div>
+		<div slot="foreground">
+			<section data-id="sinai01">
+				<div class="col-medium">
+					<p>
+						The arduous journey from Eritrea led Lemlem and Aman to the refugee camps of South Sudan. Life in the camp was marked by scarcity and uncertainty, a world away from the home they once knew.
+					</p>
+				</div>
+			</section>
+			<section data-id="sinai02">
+				<div class="col-medium">
+					<p>
+						"The camp was a sea of makeshift tents," Lemlem recalls. "The days were scorching hot, and the nights were frigid. We were always either in line for food, water, or medical assistance. But it was a sanctuary compared to what we had escaped from."
+					</p>
+				</div>
+			</section>
+			<section data-id="sinai03">
+				<div class="col-medium">
+					<p>
+						Despite the hardships, the refugee camp was also a place of resilience and hope. "We were all survivors, all clinging onto hope. There was a sense of community, and we looked out for each other," Lemlem said. She found work helping distribute aid supplies, while Aman started attending a makeshift school run by aid workers.
+					</p>
+				</div>
+			</section>
+			
+		</div>
+	</Scroller>
+	
 	
 </main>
   
