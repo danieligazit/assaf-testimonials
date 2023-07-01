@@ -63,7 +63,7 @@ const handleScroll = () => {
     }
     timer = setTimeout(function() {
         video.pause();
-    }, 150);
+    }, 250);
 
     
 }
@@ -78,35 +78,36 @@ const handleScroll = () => {
 <video
     bind:this={video}  
     bind:playbackRate={playbackRate}
-    src={src}
+    
     preload="auto"
     muted
+    
 >
     <track kind="captions">
+    <source src={src} type="video/mp4"/>
 
 </video>
 </div>
 
 <style>
 .video-container {
-    position: relative;
-    overflow: auto;
-    max-width: 100%;
-    max-height: 100vh;
+    height: 100vh;
+	overflow: hidden;
+	position: relative;
 }
 .video-container video {
   /* Make video to at least 100% wide and tall */
+  /* max-width: 100%;  */
+  /* max-height: 100%;  */
   min-width: 100%; 
   min-height: 100%; 
-
-  /* Setting width & height to auto prevents the browser from stretching or squishing the video */
-  width: auto;
-  height: auto;
-
-  /* Center the video */
-  position: absolute;
+  
+  width: 100%;
+  /* height: auto; */
+  object-fit: cover;
+  /* position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%); */
 }
 </style>

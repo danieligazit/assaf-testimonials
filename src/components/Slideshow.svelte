@@ -27,7 +27,6 @@
 		})();
 
 		const f = {id, url: url}
-		console.log('f', f)
 		if (!photo) { // init
 			photo = f;
 			newPhoto = f;
@@ -36,13 +35,12 @@
 		newPhoto = f;
 	}
 	async function onLoad(){
-		console.log('onLoad')
 		if (newPhoto.id === photo.id) {
 			firstLoad = true;
 			return;
 		}	
 		crossfading = true;
-		await sleep(1000);
+		await sleep(400);
 		photo = newPhoto;
 		crossfading = false;
 	}

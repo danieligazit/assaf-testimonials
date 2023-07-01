@@ -73,7 +73,7 @@
       export let threshold = 0.5;
       export let query = 'section';
       export let parallax = false;
-  
+    
       // bindings
       export let index = 0;
       export let count = 0;
@@ -188,11 +188,11 @@
               <slot name="background"></slot>
           </svelte-scroller-background>
       </svelte-scroller-background-container>
-  
+      
       <svelte-scroller-foreground bind:this={foreground}>
           <slot name="foreground"></slot>
       </svelte-scroller-foreground>
-  </svelte-scroller-outer>
+    </svelte-scroller-outer>
   
   <style>
       svelte-scroller-outer {

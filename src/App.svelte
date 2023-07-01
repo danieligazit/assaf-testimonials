@@ -37,6 +37,8 @@
 	let idPrev = {}; // Object to keep track of previous IDs, to compare for changes
 
 	let videoVisible = false;
+
+
 	onMount(() => {
 		idPrev = {...id};
 	});
@@ -441,35 +443,38 @@
 			<section data-id="video01">
 				<div class="col-medium">
 					<p>
-						The arduous journey from Eritrea led Lemlem and Aman to the refugee camps of South Sudan. Life in the camp was marked by scarcity and uncertainty, a world away from the home they once knew.
+						The next phase was crossing the Sahara, a seemingly endless desert stretching over 3,600,000 square miles.
+						Days were a relentless onslaught of blistering heat, the sun a constant companion searing down from the sky. Nights were a stark contrast, with temperatures plummeting to bone-chilling cold that made it difficult to sleep.
 					</p>
 				</div>
 			</section>
 			<section data-id="video02">
 				<div class="col-medium">
 					<p>
-						"The camp was a sea of makeshift tents," Lemlem recalls. "The days were scorching hot, and the nights were frigid. We were always either in line for food, water, or medical assistance. But it was a sanctuary compared to what we had escaped from."
+						"But despite the harsh conditions, the Sahara had a certain rhythm to it. Despite its vast emptiness, the desert wasn't devoid of life. We'd occasionally spot a desert.
+						We learned to navigate by the stars, their constellations becoming our guide through the void of the desert."
 					</p>
 				</div>
 			</section>
 			<section data-id="video03">
 				<div class="col-medium">
 					<p>
-						Despite the hardships, the refugee camp was also a place of resilience and hope. "We were all survivors, all clinging onto hope. There was a sense of community, and we looked out for each other," Lemlem said. She found work helping distribute aid supplies, while Aman started attending a makeshift school run by aid workers.
+						"The Sahara was both our greatest challenge and our greatest teacher," Lemlem says, "It taught us resilience, patience, and the true meaning of survival".
 					</p>
 				</div>
 			</section>
 			
 		</div>
 	</Scroller>
-
-	<Scroller {threshold} bind:id={id['sinai']} index={0}>
-		<div slot="background">
+	
+	<Scroller {threshold} bind:id={id['sinai']} index={0} splitscreen={true} style="position: absolute; top: 0; left: 0; z-index: 1;">
+		
+		<div  slot="background" >
 			<Fact fact={{title: 'hey', description: 'shoot to stop'}} />
-			<Slideshow imageUrl={imageUrl}></Slideshow>
 		</div>
-		<div slot="foreground">
-			<section data-id="sinai01">
+			
+		<div slot="foreground"  >
+			<section data-id="sinai01"  style="background-color: rgba(255, 255, 255, 0.5);">
 				<div class="col-medium">
 					<p>
 						The arduous journey from Eritrea led Lemlem and Aman to the refugee camps of South Sudan. Life in the camp was marked by scarcity and uncertainty, a world away from the home they once knew.
@@ -490,9 +495,9 @@
 					</p>
 				</div>
 			</section>
-			
 		</div>
 	</Scroller>
+
 	
 	
 </main>
@@ -525,4 +530,6 @@
 		text-align: center;
 		color: #aaa;
 	}
+
+
 </style>
