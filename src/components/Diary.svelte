@@ -53,10 +53,31 @@
 </script>
 
 <div class="all" style="position: relative;">
-<div style="position: absolute; z-index: 1;">
-	<Slideshow imageUrl={imageUrl} style="opacity: 0.5"/>
+<div style="position: absolute; z-index: -1;">
+	<Slideshow imageUrl={imageUrl}/>
 </div>
 
+<div class="wrapper" style="z-Index: 1;">
+	<div class="container" class:firstLoad >
+		{#if text}
+			{#if !crossfading}
+			<figure class="orig">
+				<p out:fade={{duration: duration}}>{text.t}</p>
+			</figure>
+			{/if}
+			{#if newText.id !== text.id}
+				<figure class="new" class:crossfading >
+					<p in:fade={{duration: duration}}>{newText.t}</p>     
+				</figure>
+			{/if}
+		{/if}
+
+	</div>
+	<div class="timeline-footer" style="z-index: 1;">
+		<Timeline timeline={timeline} timelineIndex={timelineIndex}></Timeline>
+	</div>	
+
+</div>
 </div>
 
 
