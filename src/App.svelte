@@ -22,7 +22,7 @@
 	let data = {district: {}, region: {}};
 	let metadata = {district: {}, region: {}};
 	let imageUrl = 'images/south-sudan-refugee-camp-3.jpg';
-	let timelineText = 'blablabla1';
+	let timelineText = 'A fellow nurse at the hospital where I worked disappeared. Rumor had it she helped an army deserter, and the authorities took her away.';
 	let regionsGeo;
 	let geojson;
 	
@@ -128,24 +128,24 @@
 		timeline: {
 			timeline01: () => {
 				timelineIndex = 0;
-				timelineText = 'blablabla1';
+				timelineText = 'A fellow nurse at the hospital where I worked disappeared. Rumor had it she helped an army deserter, and the authorities took her away.';
 			},
 			timeline02: () => {
 				timelineIndex = 1;
-				timelineText = 'blablabla2';
+				timelineText = 'Government officials visited our hospital, scrutinizing our records and questioning our loyalties. A sense of fear started to permeate.';
 				console.log(timelineText);
 			},
 			timeline03: () => {
 				timelineIndex = 2;
-				timelineText = 'blablabla3';
+				timelineText = 'The authorities introduced new regulations, requiring us to report any suspicious activity among patients or staff. The climate of fear deepened.';
 			},
 			timeline04: () => {
 				timelineIndex = 3;
-				timelineText = 'blablabla4';
+				timelineText = 'I noticed unknown men observing the hospital from a distance. My colleagues whispered about \'eyes watching us\'.';
 			},
 			timeline05: () => {
 				timelineIndex = 4;
-				timelineText = 'blablabla5';
+				timelineText = 'A trusted friend warned me, \'They\'re asking about you. It\'s not safe.\' That night, I made the decision to leave with Aman.';
 			},
 		},
 		map: { // Actions for <Scroller/> with id="map"
@@ -450,38 +450,6 @@
 		</div>
 	</Scroller>
 	
-	<Scroller {threshold} bind:id={id['sinai']} index={0} splitscreen={true} style="position: absolute; top: 0; left: 0; z-index: 1;">
-		
-		<div  slot="background" >
-			<Fact fact={{title: 'hey', description: 'shoot to stop'}} />
-		</div>
-			
-		<div slot="foreground"  >
-			<section data-id="sinai01"  style="background-color: rgba(255, 255, 255, 0.5);">
-				<div class="col-medium">
-					<p>
-						The arduous journey from Eritrea led Lemlem and Aman to the refugee camps of South Sudan. Life in the camp was marked by scarcity and uncertainty, a world away from the home they once knew.
-					</p>
-				</div>
-			</section>
-			<section data-id="sinai02">
-				<div class="col-medium">
-					<p>
-						"The camp was a sea of makeshift tents," Lemlem recalls. "The days were scorching hot, and the nights were frigid. We were always either in line for food, water, or medical assistance. But it was a sanctuary compared to what we had escaped from."
-					</p>
-				</div>
-			</section>
-			<section data-id="sinai03">
-				<div class="col-medium">
-					<p>
-						Despite the hardships, the refugee camp was also a place of resilience and hope. "We were all survivors, all clinging onto hope. There was a sense of community, and we looked out for each other," Lemlem said. She found work helping distribute aid supplies, while Aman started attending a makeshift school run by aid workers.
-					</p>
-				</div>
-			</section>
-		</div>
-	</Scroller>
-
-	
 	
 </main>
   
@@ -493,26 +461,7 @@
 	:global(svelte-scroller-foreground section div) {
 		pointer-events: all !important;
 	}
-	select {
-		max-width: 350px;
-	}
 
-	/* The properties below make the media DIVs grey, for visual purposes in demo */
-	.media {
-		background-color: #f0f0f0;
-		display: -webkit-box;
-		display: -ms-flexbox;
-		display: flex;
-		-webkit-box-orient: vertical;
-		-webkit-box-direction: normal;
-		-ms-flex-flow: column;
-		flex-flow: column;
-		-webkit-box-pack: center;
-		-ms-flex-pack: center;
-		justify-content: center;
-		text-align: center;
-		color: #aaa;
-	}
 
 
 </style>

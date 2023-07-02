@@ -53,12 +53,15 @@
 </script>
 
 <div class="all" style="position: relative;">
-<div style="position: absolute; z-index: -1;">
-	<Slideshow imageUrl={imageUrl}/>
+<div style="position: absolute; display: block; width: 100%; max-width:100%">
+	<div style="position: relative; z-index: 1; display: block">
+		<Slideshow imageUrl={imageUrl}/>
+	</div>
 </div>
 
-<div class="wrapper" style="z-Index: 1;">
+<div class="wrapper" style="position: relative; z-index: 2; display: block">
 	<div class="container" class:firstLoad >
+		<div class="box">
 		{#if text}
 			{#if !crossfading}
 			<figure class="orig">
@@ -71,9 +74,9 @@
 				</figure>
 			{/if}
 		{/if}
-
+		</div>		
 	</div>
-	<div class="timeline-footer" style="z-index: 1;">
+	<div class="timeline-footer" style="z-index: 2;">
 		<Timeline timeline={timeline} timelineIndex={timelineIndex}></Timeline>
 	</div>	
 
@@ -85,28 +88,44 @@
 	.wrapper {
 		display: flex;
 		flex-direction: column;
-		height: 65vh;
+		height: 80vh;
 		/* background-color: rgba(0, 0, 0, 0); */
 		background-color: transparent;
-		border: 1px solid #CCCCCC; /* a subtle border */
 		border-radius: 5px; /* rounded corners for a softer look */
-		padding: 20px; /* some spacing inside the wrapper */
 	}
 	
 	.timeline-footer {
 		width: 100%;
-		height: 100px;
-		position: relative;
-		background-color: transparent;
-		border-top: 1px solid #CCCCCC; /* a subtle border */
-		padding: 10px; /* some spacing inside the timeline-footer */
+		height: 100%;
+
+		background-color: rgba(40, 40, 40, 0.7); 
+		border-top: 1px solid #a0a0a0; /* a subtle border */
 	}
 	
+	.box {
+		vertical-align: middle;
+		display: flex;
+    	
+    	justify-content: center;
+		text-align: center;
+		background-color: rgba(40, 40, 40, 0.6);
+		padding: 1em; /* add space around the content */
+		min-height: 7%;
+		min-width: 60%;
+		width: auto; /* allow the box to expand horizontally */
+		height: auto; /* allow the box to expand vertically */
+		margin-top: 60vh;
+	}
 	.container {
-		height: 100vh;
+		height: 100%;
 		overflow: hidden;
 		position: relative;
-		padding: 10px; /* some spacing inside the container */
+		margin-left: auto;
+		margin-right: auto;
+		display: flex;
+		justify-content: center; /* horizontal centering */
+		align-items: center;
+		text-align: center;
 	}
 	
 	figure {
@@ -120,7 +139,7 @@
 	}
 	
 	p {
-		color: #333333; /* a dark grey color for text */
+		color: #ffffff; /* a dark grey color for text */
 		transition: all 1s ease;
 		object-fit: cover;
 		width: 100%;
@@ -137,7 +156,7 @@
 	}
 	
 	figure.new.crossfading p {
-		color: #333333;
+		color: #ffffff;
 	}
 	</style>
 	
