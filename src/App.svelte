@@ -18,9 +18,11 @@
     import Section from "./components/Section.svelte";
     import Video from "./components/Video.svelte";
     import Fact from "./components/Fact.svelte";
+    import Diary from "./components/Diary.svelte";
 	let data = {district: {}, region: {}};
 	let metadata = {district: {}, region: {}};
 	let imageUrl = 'images/south-sudan-refugee-camp-3.jpg';
+	let timelineText = 'blablabla1';
 	let regionsGeo;
 	let geojson;
 	
@@ -126,18 +128,24 @@
 		timeline: {
 			timeline01: () => {
 				timelineIndex = 0;
+				timelineText = 'blablabla1';
 			},
 			timeline02: () => {
 				timelineIndex = 1;
+				timelineText = 'blablabla2';
+				console.log(timelineText);
 			},
 			timeline03: () => {
 				timelineIndex = 2;
+				timelineText = 'blablabla3';
 			},
 			timeline04: () => {
 				timelineIndex = 3;
+				timelineText = 'blablabla4';
 			},
 			timeline05: () => {
 				timelineIndex = 4;
+				timelineText = 'blablabla5';
 			},
 		},
 		map: { // Actions for <Scroller/> with id="map"
@@ -235,59 +243,34 @@
 </script>
 
 <main>
-
-
-	<div>
-	<Scroller {threshold} bind:id={id['timeline']} index={0} splitscreen={true}>
+	<Scroller {threshold} bind:id={id['timeline']} index={0} splitscreen={false} style="background-color: pink">
 		<div slot="background" style="position: relative;">
-		    <!-- <div>
-				<Slideshow imageUrl={imageUrl}/>
-			</div> -->
-			<div style="position: absolute;  top: 0; left: 0;">
-				<Timeline timeline={timeline} timelineIndex={timelineIndex}></Timeline>
+		    <div>
+				<Diary imageUrl={imageUrl} currentText={timelineText} timeline={timeline} timelineIndex={timelineIndex}/>
 			</div>
-
+			
 		</div>
 		<div slot="foreground">
-			<section data-id="timeline01">
-				<div class="col-medium">
-					<p>
-						"A fellow nurse at the hospital where I worked disappeared. Rumor had it she helped an army deserter, and the authorities took her away."
-					</p>
-				</div>
+			<section data-id="timeline01" style="opacity: 0">
+				<div class="col-medium"></div>
 			</section>
 			<section data-id="timeline02">
-				<div class="col-medium">
-					<p>
-						"Government officials visited our hospital, scrutinizing our records and questioning our loyalties. A sense of fear started to permeate."
-					</p>
-				</div>
+				<div class="col-medium" style="opacity: 0"></div>
 			</section>
-			<section data-id="timeline03">
-				<div class="col-medium">
-					<p>
-						"The authorities introduced new regulations, requiring us to report any suspicious activity among patients or staff. The climate of fear deepened."
-					</p>
-				</div>
+			<section data-id="timeline03"  style="opacity: 0">
+				<div class="col-medium"></div>
 			</section>
-			<section data-id="timeline04">
-				<div class="col-medium">
-					<p>
-						"I noticed unknown men observing the hospital from a distance. My colleagues whispered about 'eyes watching us'."
-					</p>
-				</div>
+			<section data-id="timeline04"  style="opacity: 0">
+				<div class="col-medium"></div>
 			</section>
-			<section data-id="timeline05">
-				<div class="col-medium">
-					<p>
-						"A trusted friend warned me, 'They're asking about you. It's not safe.' That night, I made the decision to leave with Aman."
-					</p>
-				</div>
+			<section data-id="timeline05"  style="opacity: 0">
+				<div class="col-medium"></div>
 			</section>
 			
 		</div>
 	</Scroller>
-    </div>
+
+
 	
 	{#if geojson && data.region.indicators}
 	<Scroller {threshold} bind:id={id['map']}>

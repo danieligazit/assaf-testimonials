@@ -1,6 +1,4 @@
 <script>
-	import { onMount } from 'svelte';	
-
 	let photo;
 	let newPhoto;
 	let firstLoad = true;
@@ -27,6 +25,7 @@
 		})();
 
 		const f = {id, url: url}
+		console.log('f', f)
 		if (!photo) { // init
 			photo = f;
 			newPhoto = f;
@@ -40,7 +39,7 @@
 			return;
 		}	
 		crossfading = true;
-		await sleep(400);
+		await sleep(1000);
 		photo = newPhoto;
 		crossfading = false;
 	}

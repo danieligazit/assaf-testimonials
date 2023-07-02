@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "@onsvisual/svelte-maps": "^1.1.6",
+    "@picocss/pico": "^1.5.10",
     "@turf/bbox": "^6.5.0",
     "d3-dsv": "^3.0.1",
     "d3-geo": "^3.1.0",

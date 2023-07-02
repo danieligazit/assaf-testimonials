@@ -24,7 +24,6 @@
 	export let timelineIndex;
 
     $: {
-        
         $index=timelineIndex;
         
     }
@@ -35,13 +34,13 @@
 <div class="timeline-container">
 
 <svg viewBox="{-60+$index*200} 0 {width/timeline.length} 120">
-	<line x1=20 y1=95 x2={30+($index*200)} y2=95 stroke=black/>
+	<line x1=20 y1=70 x2={30+($index*200)} y2=70 stroke=black/>
 	
 	{#each timeline as event, i}
 		<g>
-			<text class="label" x={25+i*40*timeline.length} y=20 text-anchor="middle">{event.label}</text>
-			<text class="year" x={25+i*40*timeline.length} y=60 text-anchor="middle">{event.year}</text>
-			<circle cx={25 + i*40*timeline.length} cy=95 r={$dotSize}/>
+			<text class="label" x={25+i*40*timeline.length} y=0 text-anchor="middle">{event.label}</text>
+			<text class="year" x={25+i*40*timeline.length} y=40 text-anchor="middle">{event.year}</text>
+			<circle cx={25 + i*40*timeline.length} cy=70 r={$dotSize}/>
 		</g>
 	{/each}
 	
@@ -50,7 +49,7 @@
 
 <style>
     .timeline-container {
-        height: 50vh;
+        height: 30vh;
         width: 100%; /* You can adjust this as needed */
         margin: 0;
         position: absolute;
